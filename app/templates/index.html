@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - Edito{% endblock %}
+
+{% block content %}
+<h1 class="fs-2">Edit what you want</h1>
+
+<form action="/edit" method="post" enctype="multipart/form-data">
+
+    <div id="drop-area" class="drop-zone mb-3">
+        <p class="mb-2"><strong>Drag & Drop Image Here</strong></p>
+        <p class="text-muted">or Click to Upload</p>
+
+        <input class="form-control" type="file" name="file" id="fileElem" accept="image/*" hidden required>
+
+        <p id="file-name" class="mt-2 text-success"></p>
+
+        <img id="preview" class="img-fluid mt-3" 
+             style="display:none; max-height:200px; border-radius:8px;">
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+        <button type="submit" name="operation" value="cgrey" class="btn btn-secondary">GREY</button>
+        <button type="submit" name="operation" value="cpng" class="btn btn-success">PNG</button>
+        <button type="submit" name="operation" value="cjpg" class="btn btn-primary">JPG</button>
+        <button type="submit" name="operation" value="cwebp" class="btn btn-warning">WEBP</button>
+        <button type="submit" name="operation" value="cpdf" class="btn btn-danger">PDF</button>
+    </div>
+
+</form>
+{% endblock %}

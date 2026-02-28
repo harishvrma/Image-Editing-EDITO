@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Your Conversion History</h2>
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Before Preview</th>
+            <th>After Download</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for conv in conversions %}
+        <tr>
+            <td>{{ conv.id }}</td>
+
+            <!-- BEFORE IMAGE PREVIEW -->
+            <td>
+                <img src="{{ url_for('get_image', id=conv.id, type='before') }}"
+                     width="120"
+                     class="img-thumbnail">
+            </td>
+
+            <!-- AFTER DOWNLOAD LINK -->
+            <td>
+                <a href="{{ url_for('get_image', id=conv.id, type='after') }}"
+                   target="_blank"
+                   class="btn btn-success btn-sm">
+                    Download
+                </a>
+            </td>
+
+            <td>{{ conv.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
